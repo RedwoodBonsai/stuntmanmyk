@@ -78,7 +78,7 @@
 
   .hero-name {
     font-family: var(--serif);
-    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    font-size: clamp(2rem, 5vw, 3.2rem);
     font-weight: 600;
     color: var(--text);
     letter-spacing: 0.02em;
@@ -650,9 +650,8 @@
     }
   }
 
-  // RSVP submit — sends email via mailto fallback
-  // NOTE: For a proper backend, replace this with a fetch() to your endpoint
-  function submitRSVP() {
+  // RSVP submit via Formspree
+  async function submitRSVP() {
     const name = document.getElementById('rsvpName').value.trim();
     const email = document.getElementById('rsvpEmail').value.trim();
     const guests = document.getElementById('rsvpGuests').value;
@@ -664,21 +663,34 @@
       return;
     }
 
-    const subject = encodeURIComponent('RSVP — Celebration of Life for Mike');
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nGuests: ${guests}\nAttendance: ${attendance}\nNote: ${note || 'N/A'}`
-    );
+    const btn = document.querySelector('#rsvpForm .form-submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
 
-    window.location.href = `mailto:mike@redwoodresearch.ca?subject=${subject}&body=${body}`;
-
-    // Show success
-    document.getElementById('rsvpForm').style.display = 'none';
-    document.getElementById('rsvpToggle').style.display = 'none';
-    document.getElementById('rsvpSuccess').style.display = 'block';
+    try {
+      const res = await fetch('https://formspree.io/f/maqlknzp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, guests, attendance, note: note || 'N/A' })
+      });
+      if (res.ok) {
+        document.getElementById('rsvpForm').style.display = 'none';
+        document.getElementById('rsvpToggle').style.display = 'none';
+        document.getElementById('rsvpSuccess').style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again or email mike@redwoodresearch.ca directly.');
+        btn.textContent = 'Submit RSVP';
+        btn.disabled = false;
+      }
+    } catch (e) {
+      alert('Something went wrong. Please try again or email mike@redwoodresearch.ca directly.');
+      btn.textContent = 'Submit RSVP';
+      btn.disabled = false;
+    }
   }
 
-  // Story submit — sends email via mailto fallback
-  function submitStory() {
+  // Story submit via Formspree
+  async function submitStory() {
     const name = document.getElementById('storyName').value.trim();
     const relation = document.getElementById('storyRelation').value.trim();
     const story = document.getElementById('storyText').value.trim();
@@ -689,16 +701,29 @@
       return;
     }
 
-    const subject = encodeURIComponent('Book of Mike — Story Submission');
-    const body = encodeURIComponent(
-      `Name: ${name}\nRelationship: ${relation || 'N/A'}\nEmail: ${email || 'N/A'}\n\nStory:\n${story}`
-    );
+    const btn = document.querySelector('#storyForm .form-submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
 
-    window.location.href = `mailto:mike@redwoodresearch.ca?subject=${subject}&body=${body}`;
-
-    // Show success
-    document.getElementById('storyForm').style.display = 'none';
-    document.getElementById('storySuccess').style.display = 'block';
+    try {
+      const res = await fetch('https://formspree.io/f/xqegjaog', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, relationship: relation || 'N/A', email: email || 'N/A', story })
+      });
+      if (res.ok) {
+        document.getElementById('storyForm').style.display = 'none';
+        document.getElementById('storySuccess').style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again or email mike@redwoodresearch.ca directly.');
+        btn.textContent = 'Submit Your Story';
+        btn.disabled = false;
+      }
+    } catch (e) {
+      alert('Something went wrong. Please try again or email mike@redwoodresearch.ca directly.');
+      btn.textContent = 'Submit Your Story';
+      btn.disabled = false;
+    }
   }
 </script>
 
