@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stuntman Myk — Michael Raymond Ryan Wait (1986–2026)</title>
+<meta name="description" content="In loving memory of Michael Raymond Ryan Wait. A celebration of life, Irish Wake style, May 3, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --bg-warm: #131110;
+    --text: #e8e0d6;
+    --text-muted: #9a918a;
+    --accent: #c4956a;
+    --accent-soft: #b8845e;
+    --accent-glow: rgba(196, 149, 106, 0.12);
+    --rule: rgba(196, 149, 106, 0.25);
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(196, 149, 106, 0.1);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Raleway', 'Helvetica Neue', sans-serif;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg-warm);
+    color: var(--text);
+    line-height: 1.7;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* Warm centre glow */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    text-align: center;
+    padding: 80px 0 48px;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .hero-nickname {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero-dates {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+
+  .hero-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+    margin: 0 auto 32px;
+    opacity: 0.5;
+  }
+
+  .hero-quote {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── Section styling ── */
+  section {
+    padding: 40px 0;
+  }
+
+  .section-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--rule);
+    margin: 0 auto 40px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+
+  .obituary-text {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--text);
+    opacity: 0.9;
+  }
+
+  .obituary-text p {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .obituary-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Wake / RSVP card ── */
+  .wake-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 40px 36px;
+    text-align: center;
+    margin: 16px 0;
+  }
+
+  .wake-card .event-label {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .wake-card .event-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .wake-detail {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+
+  .wake-detail strong {
+    color: var(--accent-soft);
+    font-weight: 500;
+  }
+
+  .wake-note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 20px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .rsvp-btn {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 40px;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .rsvp-btn:hover {
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+  }
+
+  /* ── RSVP Form (hidden by default) ── */
+  .rsvp-form-section {
+    display: none;
+    margin-top: 28px;
+    text-align: left;
+  }
+
+  .rsvp-form-section.active {
+    display: block;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--text);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .form-group select {
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239a918a' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  .form-group select option {
+    background: #1a1816;
+    color: var(--text);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .form-submit {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 12px 32px;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+  }
+
+  .form-submit:hover {
+    background: var(--accent-soft);
+  }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  /* ── Book of Mike ── */
+  .book-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 36px;
+    text-align: center;
+  }
+
+  .book-card .book-label {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .book-card .book-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .book-card .book-desc {
+    font-size: 0.9rem;
+    color: var(--text);
+    opacity: 0.85;
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 24px;
+  }
+
+  .story-form .form-group textarea {
+    min-height: 120px;
+  }
+
+  .story-form {
+    text-align: left;
+    margin-top: 24px;
+  }
+
+  .story-success {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  /* ── Donations ── */
+  .donations {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text);
+    opacity: 0.85;
+    line-height: 1.7;
+  }
+
+  .donations p {
+    margin-bottom: 8px;
+  }
+
+  /* ── Condolences ── */
+  .condolences {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .condolences a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 0.3s;
+  }
+
+  .condolences a:hover {
+    border-color: var(--accent);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 48px 0 40px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+
+  /* ── Animations ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .delay-1 { animation-delay: 0.15s; }
+  .delay-2 { animation-delay: 0.3s; }
+  .delay-3 { animation-delay: 0.45s; }
+  .delay-4 { animation-delay: 0.6s; }
+  .delay-5 { animation-delay: 0.75s; }
+
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .hero { padding: 60px 0 36px; }
+    .wake-card { padding: 28px 20px; }
+    .book-card { padding: 28px 20px; }
+    .container { padding: 0 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-nickname fade-up">"Stuntman Myk" &middot; "Uncle Mikey"</div>
+    <h1 class="hero-name fade-up delay-1">Michael Raymond Ryan Wait</h1>
+    <div class="hero-dates fade-up delay-2">1986 &ndash; 2026 &nbsp;&middot;&nbsp; 39 Years Young</div>
+    <div class="hero-rule fade-up delay-3"></div>
+    <p class="hero-quote fade-up delay-4">
+      &ldquo;Just a dude playin&rsquo; a dude disguised as another dude.&rdquo;
+    </p>
+  </header>
+
+  <!-- Obituary -->
+  <section class="fade-in-section">
+    <div class="section-rule"></div>
+    <div class="obituary-text">
+      <p>
+        Michael Raymond Ryan Wait, 39 years young, of Maple Ridge, BC, passed away suddenly and unexpectedly at home on Thursday, April 2, 2026.
+      </p>
+      <p>
+        What follows is only a fraction of the adventures, laughter, and love that made Mike who he was. Known to many as &ldquo;Stuntman Myk,&rdquo; and to his nieces as &ldquo;Uncle Mikey,&rdquo; he will be remembered for his bold, fiery love of spicy food, off&#8209;grid camping adventures, jiu&#8209;jitsu, and his unforgettable sense of humour and storytelling. He loved his family deeply and was a loyal friend. Kind&#8209;hearted, selfless, and dependable, Mike was the kind of son, brother, uncle, and friend you could always count on.
+      </p>
+      <p>
+        He was a true hero to his nieces, Carly and Jocelyn, always showing up for any and all emergencies. Following in the footsteps of his father and papa, he was also a naturally gifted mechanic and &ldquo;certified&rdquo; German car expert. Mike never ran out of ideas or the courage to chase them. From motovlogging to drones, tractors, and farming, he was always planning the next chapter. His latest and boldest venture was destined to be his biggest yet, bringing a decade of trading expertise full circle into an algorithm&#8209;trading business of his own.
+      </p>
+      <p>
+        Mike was paradoxically both reserved and gregarious. He cherished his solitude, racking up online gaming wins, yet could light up any room he walked into. He could be the life of any party he chose to attend and took great joy in pranking family and friends. When he was passionate about a topic, he became an expert in it. Family and friends regularly turned to him for advice and knowledge, confident in his broad skills and abilities. His known adventures have become family mythology, and his unknown ones are even better. For all his toughness, Mike had the softest heart for animals. His cat, Miles, was a constant companion, and over the years, he provided welcoming homes to many cats and dogs.
+      </p>
+      <p>
+        Mike is survived by his loving parents, Robert &ldquo;Bob&rdquo; Wait and Wendy Wait (n&eacute;e McLean) of Maple Ridge; his brother and best friend, John McLean (n&eacute; Wait), and sister&#8209;in&#8209;law Laura McLean (n&eacute;e LeBlanc); his beloved nieces, Carly (Cody Felgnar) and Jocelyn (Nate Trampleasure), all of Maple Ridge, BC; aunts Susan (n&eacute;e McLean) Warneca (Frank) of Kingston, ON; Janice McLean (Tracy Read) of Kingston, ON; Cindy Knorek (n&eacute;e Wait) of Qualicum Beach, BC; Debbie Wait of Milton, ON; and several cousins and great&#8209;cousins. He was predeceased by his maternal grandparents Patricia (n&eacute;e Yeoman) McLean and Hubert McLean; his paternal grandparents Raymond Wait and Katie (n&eacute;e Bashnick) Wait&#8209;Beuerlein and his uncles David Wait (Debbie) and Barry Wait.
+      </p>
+      <p>
+        Mike will be deeply missed and forever remembered for his strength, loyalty, and the laughter he brought into every room. Friday BBQs with his work buddies gave him the chance to tell stories about delivering service with a smile, no matter how difficult the client. He had a quick wit and a way of making people feel at ease. He was a light in the lives of everyone who knew him and was someone who always showed up, could be depended on when needed, and made even the hardest days a little easier with his humour. Family Sunday dinners will not be the same without him.
+      </p>
+    </div>
+  </section>
+
+  <!-- Celebration of Life / RSVP -->
+  <section class="fade-in-section">
+    <div class="section-rule"></div>
+    <h2 class="section-title">Celebration of Life</h2>
+    <div class="wake-card">
+      <div class="event-label">An Irish Wake</div>
+      <div class="event-title">Celebrating Stuntman Myk</div>
+      <div class="wake-detail"><strong>Date:</strong> Sunday, May 3, 2026</div>
+      <div class="wake-detail"><strong>Location:</strong> Details provided upon RSVP</div>
+      <div class="wake-detail"><strong>Style:</strong> Casual. Come as you are. Stories, laughter, food, and drinks.</div>
+      <div class="wake-note">
+        For friends and relatives outside our area, a Zoom link will be provided to attend virtually.
+      </div>
+
+      <button class="rsvp-btn" id="rsvpToggle" onclick="toggleRSVP()">RSVP Here</button>
+
+      <div class="rsvp-form-section" id="rsvpForm">
+        <div class="form-group">
+          <label for="rsvpName">Your Name</label>
+          <input type="text" id="rsvpName" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label for="rsvpEmail">Email</label>
+          <input type="email" id="rsvpEmail" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label for="rsvpGuests">Number of Guests (including yourself)</label>
+          <select id="rsvpGuests">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5+">5+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="rsvpAttendance">Attendance</label>
+          <select id="rsvpAttendance">
+            <option value="in-person">In Person</option>
+            <option value="virtual">Virtual (Zoom)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="rsvpNote">Note for the family (optional)</label>
+          <textarea id="rsvpNote" placeholder="A message, a memory, or just letting us know you're thinking of Mike..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitRSVP()">Submit RSVP</button>
+      </div>
+
+      <div class="form-success" id="rsvpSuccess">
+        Thank you. We&rsquo;ll be in touch with the details. &hearts;
+      </div>
+    </div>
+  </section>
+
+  <!-- Book of Mike -->
+  <section class="fade-in-section">
+    <div class="section-rule"></div>
+    <div class="book-card">
+      <div class="book-label">Share a Memory</div>
+      <div class="book-title">The Book of Mike</div>
+      <p class="book-desc">
+        We&rsquo;re collecting stories, memories, and favourite moments from everyone who knew and loved Mike. 
+        Your story will be included in a keepsake book for the family. 
+        Funny, touching, embarrassing, legendary &mdash; we want to hear it all.
+      </p>
+
+      <div class="story-form" id="storyForm">
+        <div class="form-group">
+          <label for="storyName">Your Name</label>
+          <input type="text" id="storyName" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label for="storyRelation">Your Relationship to Mike</label>
+          <input type="text" id="storyRelation" placeholder="e.g., Friend, Cousin, Coworker...">
+        </div>
+        <div class="form-group">
+          <label for="storyText">Your Story or Memory</label>
+          <textarea id="storyText" placeholder="Tell us about a time with Mike..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="storyEmail">Your Email (optional, in case we need to follow up)</label>
+          <input type="email" id="storyEmail" placeholder="you@example.com">
+        </div>
+        <button class="form-submit" onclick="submitStory()">Submit Your Story</button>
+      </div>
+
+      <div class="story-success" id="storySuccess">
+        Thank you for sharing. This means the world to our family. &hearts;
+      </div>
+    </div>
+  </section>
+
+  <!-- Donations -->
+  <section class="fade-in-section">
+    <div class="section-rule"></div>
+    <h2 class="section-title">In Lieu of Flowers</h2>
+    <div class="donations">
+      <p>Donations in Mike&rsquo;s name may be made to:</p>
+      <p><strong style="color: var(--accent-soft);">BC SPCA</strong> &nbsp;&middot;&nbsp; <strong style="color: var(--accent-soft);">Maple Ridge Legion</strong> &nbsp;&middot;&nbsp; <strong style="color: var(--accent-soft);">A charity of your choice</strong></p>
+    </div>
+  </section>
+
+  <!-- Condolences -->
+  <section class="fade-in-section">
+    <div class="section-rule"></div>
+    <div class="condolences">
+      <p>Condolences and messages to Mike may be sent to<br>
+        <a href="mailto:mike@redwoodresearch.ca">mike@redwoodresearch.ca</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>With love, from Mike&rsquo;s family.</p>
+  </footer>
+
+</div>
+
+<script>
+  // Scroll-triggered fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+
+  // RSVP toggle
+  function toggleRSVP() {
+    const form = document.getElementById('rsvpForm');
+    const btn = document.getElementById('rsvpToggle');
+    if (form.classList.contains('active')) {
+      form.classList.remove('active');
+      btn.textContent = 'RSVP Here';
+    } else {
+      form.classList.add('active');
+      btn.textContent = 'Close';
+    }
+  }
+
+  // RSVP submit — sends email via mailto fallback
+  // NOTE: For a proper backend, replace this with a fetch() to your endpoint
+  function submitRSVP() {
+    const name = document.getElementById('rsvpName').value.trim();
+    const email = document.getElementById('rsvpEmail').value.trim();
+    const guests = document.getElementById('rsvpGuests').value;
+    const attendance = document.getElementById('rsvpAttendance').value;
+    const note = document.getElementById('rsvpNote').value.trim();
+
+    if (!name || !email) {
+      alert('Please enter your name and email.');
+      return;
+    }
+
+    const subject = encodeURIComponent('RSVP — Celebration of Life for Mike');
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nGuests: ${guests}\nAttendance: ${attendance}\nNote: ${note || 'N/A'}`
+    );
+
+    window.location.href = `mailto:mike@redwoodresearch.ca?subject=${subject}&body=${body}`;
+
+    // Show success
+    document.getElementById('rsvpForm').style.display = 'none';
+    document.getElementById('rsvpToggle').style.display = 'none';
+    document.getElementById('rsvpSuccess').style.display = 'block';
+  }
+
+  // Story submit — sends email via mailto fallback
+  function submitStory() {
+    const name = document.getElementById('storyName').value.trim();
+    const relation = document.getElementById('storyRelation').value.trim();
+    const story = document.getElementById('storyText').value.trim();
+    const email = document.getElementById('storyEmail').value.trim();
+
+    if (!name || !story) {
+      alert('Please enter your name and your story.');
+      return;
+    }
+
+    const subject = encodeURIComponent('Book of Mike — Story Submission');
+    const body = encodeURIComponent(
+      `Name: ${name}\nRelationship: ${relation || 'N/A'}\nEmail: ${email || 'N/A'}\n\nStory:\n${story}`
+    );
+
+    window.location.href = `mailto:mike@redwoodresearch.ca?subject=${subject}&body=${body}`;
+
+    // Show success
+    document.getElementById('storyForm').style.display = 'none';
+    document.getElementById('storySuccess').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
